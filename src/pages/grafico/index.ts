@@ -1,0 +1,1 @@
+export {Grafico} from "./Grafico"
