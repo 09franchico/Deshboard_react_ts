@@ -31,6 +31,7 @@ export const PessoaCard = () => {
 
   const handleCancel = ()=>{
      alert("cancelado")
+     navigate("/pessoa")
 
   }
 
@@ -54,7 +55,7 @@ export const PessoaCard = () => {
               <VformPessoa name='endereco.complemento' label='Complemento' tamanho={400} />
             </div>
             <C.ConatinerButton>
-                <C.ButtonSave onSubmit={handleCancel} borde='#FF4560' colorItem='#1B213B'>Cancelar</C.ButtonSave>
+                <C.ButtonSave onClick={handleCancel} borde='#FF4560' colorItem='#1B213B'>Cancelar</C.ButtonSave>
                 <C.ButtonSave colorItem='#00E396'>Salvar</C.ButtonSave>
             </C.ConatinerButton>
           </C.Endereco>
