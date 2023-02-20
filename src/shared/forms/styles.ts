@@ -11,7 +11,8 @@ export const Vform = styled(Unform)`
 
 export const Input = styled.input<{ tamanho: number }>`
     margin-top: 20px;
-    height: 30px;
+    margin-left: 20px;
+    height: 35px;
     width: ${props => props.tamanho+"px"};
     border-radius: 2px;
     border: none;
@@ -20,7 +21,13 @@ export const Input = styled.input<{ tamanho: number }>`
 
 export const Label = styled.label`
     padding: 10px;
-    margin-left: -5px;
+    margin-left: 10px;
     margin-bottom: -20px;
 
+`
+
+export const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
 `

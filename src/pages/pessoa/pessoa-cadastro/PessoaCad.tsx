@@ -29,6 +29,11 @@ export const PessoaCard = () => {
     }
   }
 
+  const handleCancel = ()=>{
+     alert("cancelado")
+
+  }
+
   return (
     <DestBord ferramentaListagem={false} >
       <C.Container>
@@ -39,12 +44,19 @@ export const PessoaCard = () => {
             <VformPessoa name='email' label='Email' tamanho={500} />
           </C.Pessoa>
           <C.Endereco>
-            <VformPessoa name='endereco.rua' label='Rua' tamanho={500} />
-            <span>
-              <VformPessoa name='endereco.bairro' label='Bairro' tamanho={100} />
-              <VformPessoa name='endereco.numero' label='Numero' tamanho={50} />
-            </span>
-            <VformPessoa name='endereco.complemento' label='Complemento' tamanho={500} />
+            <span>Endereço Residencial:</span>
+            <div>
+                <VformPessoa name='endereco.rua' label='Rua' tamanho={500} />
+                <VformPessoa name='endereco.numero' label='Numero' tamanho={100} />
+            </div>
+            <div>
+              <VformPessoa name='endereco.bairro' label='Bairro' tamanho={200} />
+              <VformPessoa name='endereco.complemento' label='Complemento' tamanho={400} />
+            </div>
+            <C.ConatinerButton>
+                <C.ButtonSave onSubmit={handleCancel} borde='#FF4560' colorItem='#1B213B'>Cancelar</C.ButtonSave>
+                <C.ButtonSave colorItem='#00E396'>Salvar</C.ButtonSave>
+            </C.ConatinerButton>
           </C.Endereco>
         </Vform>
       </C.Container>

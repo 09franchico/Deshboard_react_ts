@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useField } from '@unform/core'
-import {Input, Label} from "./styles"
+import {Container, Input, Label} from "./styles"
 
 
 interface Props {
@@ -31,7 +31,7 @@ export const VformPessoa = ({ name, label,tamanho, ...rest }: InputProps)=> {
     })
   }, [fieldName, registerField])
   return (
-    <>
+    <Container>
       {label && <Label htmlFor={fieldName}>{label}</Label>}
       <Input
         tamanho={tamanho}
@@ -41,6 +41,6 @@ export const VformPessoa = ({ name, label,tamanho, ...rest }: InputProps)=> {
         defaultValue={defaultValue}
       />
       {error && <span>{error}</span>}
-    </>
+    </Container>
   )
 }

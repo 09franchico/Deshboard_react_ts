@@ -3,6 +3,7 @@ import * as C from "./styles"
 import { useEffect, useState } from "react"
 import { IPessoa, PessoaService } from "../../../shared/services/pessoa/PessoaService"
 import { ApiException } from "../../../shared/services/ApiException"
+import { MdCreate, MdDeleteOutline } from "react-icons/md"
 
 export const Pessoa = () => {
   const [pessoa, setPessoa] = useState<IPessoa[]>()
@@ -50,6 +51,8 @@ export const Pessoa = () => {
                   <td >{item.endereco.bairro}</td>
                   <td >{item.endereco.numero}</td>
                   <td >{item.endereco.complemento}</td>
+                  <td><MdDeleteOutline size={25}/></td>
+                  <td><MdCreate size={25}/></td>
                 </tr>
               ))
             }
