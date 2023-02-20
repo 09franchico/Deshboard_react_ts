@@ -20,7 +20,7 @@ export const PessoaCard = () => {
         if (result instanceof ApiException) {
           alert(result.message);
         } else {
-          navigate('/pessoa')
+          navigate('/sucesso')
           console.log(result)
         }
       });

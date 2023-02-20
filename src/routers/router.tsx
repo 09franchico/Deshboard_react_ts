@@ -2,6 +2,7 @@
 import {createBrowserRouter,} from "react-router-dom";
 import { Grafico } from "../pages/grafico";
 import { Pessoa, PessoaCard } from "../pages/pessoa";
+import { Sucesso } from "../pages/sucesso";
 import { ErrorPage } from "./error/ErrorPage";
 
 export const Router = createBrowserRouter([
@@ -17,6 +18,9 @@ export const Router = createBrowserRouter([
   {
     path:"/pessoa/cad",
     element:<PessoaCard/>
-
+  },
+  {
+    path:"/sucesso",
+    element:<Sucesso/>
   }
 ]);
