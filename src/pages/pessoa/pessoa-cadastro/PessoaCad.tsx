@@ -1,7 +1,8 @@
 import { FormHandles, SubmitHandler } from '@unform/core'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { DestBord } from '../../../shared/components/destboard'
+import { Modal } from '../../../shared/components/modal'
 import { Input, Vform } from '../../../shared/forms/styles'
 import { VformPessoa } from '../../../shared/forms/VformPessoa'
 import { ApiException } from '../../../shared/services/ApiException'
@@ -10,6 +11,7 @@ import * as C from './styles'
 
 
 export const PessoaCard = () => {
+  const [modalStatus, setModalStatus] = useState(false)
   const navigate = useNavigate()
 
   const formRef = useRef<FormHandles>(null)
@@ -28,10 +30,12 @@ export const PessoaCard = () => {
       alert('Valores não pode ser vazio')
     }
   }
-
-  const handleCancel = ()=>{
-     alert("cancelado")
-     navigate("/pessoa")
+  
+  const handleCancel = (e:any)=>{
+      e.preventDefault();
+      setModalStatus(true)
+      //alert("cancelado")
+      //navigate("/pessoa")
 
   }
 
@@ -60,6 +64,9 @@ export const PessoaCard = () => {
             </C.ConatinerButton>
           </C.Endereco>
         </Vform>
+        <Modal status={modalStatus} setStatusModal={setModalStatus}>
+          Francisco
+        </Modal>
       </C.Container>
     </DestBord>
 
