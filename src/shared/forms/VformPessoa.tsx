@@ -6,10 +6,11 @@ import {Input, Label} from "./styles"
 interface Props {
   name: string
   label?: string
+  tamanho:number
 }
 type InputProps = JSX.IntrinsicElements['input'] & Props
 
-export const VformPessoa = ({ name, label, ...rest }: InputProps)=> {
+export const VformPessoa = ({ name, label,tamanho, ...rest }: InputProps)=> {
 
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -33,6 +34,7 @@ export const VformPessoa = ({ name, label, ...rest }: InputProps)=> {
     <>
       {label && <Label htmlFor={fieldName}>{label}</Label>}
       <Input
+        tamanho={tamanho}
         {...rest}
         id={fieldName}
         ref={inputRef}
