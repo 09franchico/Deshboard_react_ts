@@ -34,8 +34,6 @@ export const PessoaCard = () => {
   const handleCancel = (e:any)=>{
       e.preventDefault();
       setModalStatus(true)
-      //alert("cancelado")
-      //navigate("/pessoa")
 
   }
 
@@ -65,7 +63,8 @@ export const PessoaCard = () => {
           </C.Endereco>
         </Vform>
         <Modal status={modalStatus} setStatusModal={setModalStatus}>
-          Francisco
+          <p>Deseja cancelar o cadastro ?</p>
+          <button>Sair</button>
         </Modal>
       </C.Container>
     </DestBord>

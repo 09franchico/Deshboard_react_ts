@@ -20,6 +20,11 @@ export const ModelBody = styled.div`
     width: 500px;
     align-items: center;
     border-radius: 5px;
-    background-color: gray;
+    background-color: #262D47;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
 
 `

@@ -9,9 +9,8 @@ type Props ={
 
 export const Modal = ({children,status,setStatusModal}:Props)=>{
 
-    const handleModalStatus:React.MouseEventHandler<HTMLDivElement> = (e)=>{
-        if(e.currentTarget.classList.contains('modal')){
-            console.log(e.target)
+    const handleModalStatus = (e:any)=>{
+        if(e.target.classList.contains('modal')){
             setStatusModal(false)
         }
     }
