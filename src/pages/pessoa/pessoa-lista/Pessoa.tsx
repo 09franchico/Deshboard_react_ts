@@ -4,8 +4,11 @@ import { useEffect, useState } from "react"
 import { IPessoa, PessoaService } from "../../../shared/services/pessoa/PessoaService"
 import { ApiException } from "../../../shared/services/ApiException"
 import { MdCreate, MdDeleteOutline } from "react-icons/md"
+import { Modal, ModalDelete } from "../../../shared/components/modal"
 
 export const Pessoa = () => {
+  const [modalStatus, setModalStatus] = useState(false)
+  const [idPessoa , setIdPessoa] = useState(0)
   const [pessoa, setPessoa] = useState<IPessoa[]>([])
   const [loading,setLoading] = useState(false);
 
@@ -17,7 +20,6 @@ export const Pessoa = () => {
           alert(result.message);
         } else {
           setPessoa(result);
-          console.log(result)
         }
       });
       setLoading(false)
@@ -26,16 +28,8 @@ export const Pessoa = () => {
   
   //Delete Pessoa
   const handleDalete = (id:number) =>{
-    PessoaService.deleteById(id)
-      .then((result) => {
-      if (result instanceof ApiException) {
-        alert(result.message);
-      } else {
-         setPessoa(pess=>[
-            ...pess.filter(pessoa => parseInt(pessoa.id) !== id)
-         ])
-      }
-    })
+    setIdPessoa(id)
+    setModalStatus(true)
 
   }
   
@@ -73,6 +67,13 @@ export const Pessoa = () => {
             }
           </tbody>
         </table>
+        <Modal status={modalStatus} setStatusModal={setModalStatus}>
+           <ModalDelete 
+               url="/pessoa"
+               idDelete ={idPessoa} 
+               setStatusModel={setModalStatus}
+               setData={setPessoa}/>
+        </Modal>
       </C.Container>
     </DestBord >
   )

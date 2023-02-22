@@ -27,7 +27,6 @@ export const PessoaCard = () => {
         } else {
           setSucessoModal(true)
           setModalStatus(true)
-          console.log(result)
         }
       });
     } else {
