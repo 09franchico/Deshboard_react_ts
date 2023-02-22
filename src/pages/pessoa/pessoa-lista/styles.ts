@@ -21,6 +21,15 @@ export const Container = styled.div`
     }
 `
 
+export const Td = styled.td`
+    text-align: center;
+    width: 10px;
+    :hover{
+        cursor: pointer;
+    }
+
+`
+
 export const Button = styled.button`
    height: 40px;
    width: 400px;

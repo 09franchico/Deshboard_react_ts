@@ -6,12 +6,11 @@ import { ApiException } from "../../../shared/services/ApiException"
 import { MdCreate, MdDeleteOutline } from "react-icons/md"
 
 export const Pessoa = () => {
-  const [pessoa, setPessoa] = useState<IPessoa[]>()
+  const [pessoa, setPessoa] = useState<IPessoa[]>([])
   const [loading,setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true)
-    
     PessoaService.getAll()
       .then((result) => {
         if (result instanceof ApiException) {
@@ -23,6 +22,22 @@ export const Pessoa = () => {
       });
       setLoading(false)
   }, []);
+
+  
+  //Delete Pessoa
+  const handleDalete = (id:number) =>{
+    PessoaService.deleteById(id)
+      .then((result) => {
+      if (result instanceof ApiException) {
+        alert(result.message);
+      } else {
+         setPessoa(pess=>[
+            ...pess.filter(pessoa => parseInt(pessoa.id) !== id)
+         ])
+      }
+    })
+
+  }
   
   return (
     <DestBord ferramentaListagem={true} tipo='pessoa'>
@@ -51,8 +66,8 @@ export const Pessoa = () => {
                   <td >{item.endereco.bairro}</td>
                   <td >{item.endereco.numero}</td>
                   <td >{item.endereco.complemento}</td>
-                  <td><MdDeleteOutline size={25}/></td>
-                  <td><MdCreate size={25}/></td>
+                  <C.Td onClick={() => handleDalete(parseInt(item.id))}><MdDeleteOutline size={25}/></C.Td>
+                  <C.Td><MdCreate size={25}/></C.Td>
                 </tr>
               ))
             }

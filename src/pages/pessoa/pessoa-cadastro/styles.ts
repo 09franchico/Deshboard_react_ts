@@ -40,7 +40,7 @@ export const ConatinerButton = styled.div`
    justify-content: end;
 `
 
-export const ButtonSave = styled.button<{colorItem:string,borde?:string}>`
+export const ButtonSave = styled.button<{colorItem:string,borde?:string,hove:string}>`
    margin-left: 20px;
    border: 1px solid ${props => props.borde};
    width: 150px;
@@ -51,6 +51,7 @@ export const ButtonSave = styled.button<{colorItem:string,borde?:string}>`
 
    :hover{
       cursor:pointer;
+      background-color: ${props => props.hove};
 
    }
 

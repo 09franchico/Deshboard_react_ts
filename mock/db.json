@@ -1,29 +1,16 @@
 {
   "pessoa": [
     {
-      "nome": "json-server",
-      "sobrenome": "Santos",
-      "telefone": "92993160919",
-      "email": "typicode",
-      "endereco": {
-        "rua": "rua teste",
-        "bairro": "crespo",
-        "numero": 68,
-        "complemento": "Casa"
-      },
-      "id": 3
-    },
-    {
-      "nome": "Tiago Souza Pimentel",
-      "sobrenome": "awdawd",
+      "nome": "Francisco Santos de Souza",
+      "sobrenome": "Santos de Souza",
       "email": "francisco.santossouzafilho@gmail.com",
       "endereco": {
-        "rua": "awdawdawd",
+        "rua": "Rua Nova babel",
         "numero": "12",
         "bairro": "gagwvdawd",
-        "complemento": "awdawdawd"
+        "complemento": "awdawd"
       },
-      "id": 4
+      "id": 2
     }
   ]
 }

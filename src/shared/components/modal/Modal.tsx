@@ -15,7 +15,8 @@ export const Modal = ({children,status,setStatusModal}:Props)=>{
         }
     }
     return(
-        <C.Container className="modal"
+        <C.Container 
+          className="modal"
           status={status} 
           onClick={handleModalStatus}>
            <C.ModelBody>
