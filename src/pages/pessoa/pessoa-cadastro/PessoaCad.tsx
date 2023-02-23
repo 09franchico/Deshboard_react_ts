@@ -17,7 +17,7 @@ export const PessoaCard = () => {
   const { id = 'nova' } = useParams<'id'>();
   const formRef = useRef<FormHandles>(null)
 
-  //Update listagem do pessoa nos inputs
+  //Se for Update, lista pessoa nos inputs
   useEffect(() => {
     if (id !== 'nova') {
       PessoaService.getById(Number(id))
@@ -45,9 +45,9 @@ export const PessoaCard = () => {
     }
   }, [id]);
 
-
   //Submit do formulario para criar nova pessoa
   const handleSubmit: SubmitHandler<IPessoa> = data => {
+    
     if (id === 'nova') {
       if (data.nome != '' && data.sobrenome != '') {
         PessoaService
@@ -64,7 +64,6 @@ export const PessoaCard = () => {
         alert('Valores não pode ser vazio')
       }
     }else{
-
       //Update de pessoa
       PessoaService
             .updateById(Number(id),data)

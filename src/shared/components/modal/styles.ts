@@ -26,5 +26,6 @@ export const ModelBody = styled.div`
     align-items: center;
     flex-direction: column;
     color: white;
+    box-shadow: 0px 0px 50px black;
 
 `
