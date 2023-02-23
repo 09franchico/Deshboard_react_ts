@@ -16,7 +16,7 @@ export const Router = createBrowserRouter([
     element:<Pessoa/>
   },
   {
-    path:"/pessoa/cad",
+    path:"/pessoa/detalhe/:id",
     element:<PessoaCard/>
   },
   {

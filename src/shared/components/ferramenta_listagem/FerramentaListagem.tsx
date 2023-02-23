@@ -11,7 +11,7 @@ export const FerramentaListagem = ({ativo,tipo}:IProps)=>{
 
     const HandleCreate = ()=>{
          if(tipo =="pessoa"){
-            navigate('/pessoa/cad')
+            navigate('/pessoa/detalhe/nova')
          }
     }
     return(

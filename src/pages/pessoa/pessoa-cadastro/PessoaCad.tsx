@@ -1,36 +1,80 @@
 import { FormHandles, SubmitHandler } from '@unform/core'
-import { useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useRef, useState,useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { DestBord } from '../../../shared/components/destboard'
 import { Modal } from '../../../shared/components/modal'
-import { Input, Vform } from '../../../shared/forms/styles'
+import { Vform } from '../../../shared/forms/styles'
 import { VformPessoa } from '../../../shared/forms/VformPessoa'
 import { ApiException } from '../../../shared/services/ApiException'
 import { IPessoa, PessoaService } from '../../../shared/services/pessoa/PessoaService'
 import { Sucesso } from '../../sucesso'
 import * as C from './styles'
 
-
 export const PessoaCard = () => {
   const [modalStatus, setModalStatus] = useState(false)
   const [sucessoModal,setSucessoModal] = useState(false)
   const navigate = useNavigate()
-
+  const { id = 'nova' } = useParams<'id'>();
   const formRef = useRef<FormHandles>(null)
 
-  //Submit do formulario
-  const handleSubmit: SubmitHandler<IPessoa> = data => {
-    if (data.nome != '' && data.sobrenome != '') {
-      PessoaService.create(data).then((result) => {
-        if (result instanceof ApiException) {
-          alert(result.message);
-        } else {
-          setSucessoModal(true)
-          setModalStatus(true)
-        }
-      });
+  //Update listagem do pessoa nos inputs
+  useEffect(() => {
+    if (id !== 'nova') {
+      PessoaService.getById(Number(id))
+        .then((result) => {
+          if (result instanceof Error) {
+            alert(result.message);
+            navigate('/pessoa');
+          } else {
+            formRef.current?.setData(result);
+          }
+        });
     } else {
-      alert('Valores não pode ser vazio')
+      formRef.current?.setData({
+        nome:'',
+        sobrenome:'',
+        telefone:'',
+        email:'',
+        endereco:{
+            rua:'',
+            bairro:'',
+            numero:'',
+            complemento:''
+    }
+      });
+    }
+  }, [id]);
+
+
+  //Submit do formulario para criar nova pessoa
+  const handleSubmit: SubmitHandler<IPessoa> = data => {
+    if (id === 'nova') {
+      if (data.nome != '' && data.sobrenome != '') {
+        PessoaService
+        .create(data)
+        .then((result) => {
+          if (result instanceof ApiException) {
+            alert(result.message);
+          } else {
+            setSucessoModal(true)
+            setModalStatus(true)
+          }
+        });
+      }else{
+        alert('Valores não pode ser vazio')
+      }
+    }else{
+
+      //Update de pessoa
+      PessoaService
+            .updateById(Number(id),data)
+            .then((result) => {
+              if (result instanceof ApiException) {
+                alert(result.message);
+              } else {
+                  navigate('/pessoa');
+              }
+            });
     }
   }
   

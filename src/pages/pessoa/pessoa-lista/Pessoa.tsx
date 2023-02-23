@@ -5,12 +5,15 @@ import { IPessoa, PessoaService } from "../../../shared/services/pessoa/PessoaSe
 import { ApiException } from "../../../shared/services/ApiException"
 import { MdCreate, MdDeleteOutline } from "react-icons/md"
 import { Modal, ModalDelete } from "../../../shared/components/modal"
+import { useNavigate } from "react-router-dom"
 
 export const Pessoa = () => {
   const [modalStatus, setModalStatus] = useState(false)
   const [idPessoa , setIdPessoa] = useState(0)
   const [pessoa, setPessoa] = useState<IPessoa[]>([])
   const [loading,setLoading] = useState(false);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     setLoading(true)
@@ -32,7 +35,13 @@ export const Pessoa = () => {
     setModalStatus(true)
 
   }
-  
+
+  //Update Pessoa
+  const handleUpdate = (id:number)=>{
+     console.log("----------->",id)
+
+  }
+
   return (
     <DestBord ferramentaListagem={true} tipo='pessoa'>
       <C.Container>
@@ -61,7 +70,7 @@ export const Pessoa = () => {
                   <td >{item.endereco.numero}</td>
                   <td >{item.endereco.complemento}</td>
                   <C.Td onClick={() => handleDalete(parseInt(item.id))}><MdDeleteOutline size={25}/></C.Td>
-                  <C.Td><MdCreate size={25}/></C.Td>
+                  <C.Td><MdCreate size={25} onClick={() => navigate(`/pessoa/detalhe/${item.id}`)}/></C.Td>
                 </tr>
               ))
             }
