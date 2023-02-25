@@ -119,10 +119,12 @@ export const PessoaCard = () => {
                      hove='#FF4560' 
                      onClick={handleCancel} 
                      borde='#FF4560'
-                     colorItem='#1B213B'>Cancelar</C.ButtonSave>
+                     colorItem='#1B213B'>Cancelar
+                </C.ButtonSave>
                 <C.ButtonSave 
                      hove='#0cbe82' 
-                     colorItem='#00E396'>Salvar</C.ButtonSave>
+                     colorItem='#00E396'>Salvar
+                </C.ButtonSave>
             </C.ConatinerButton>
           </C.Endereco>
         </Vform>
@@ -130,7 +132,7 @@ export const PessoaCard = () => {
           {sucessoModal 
              ? <Sucesso msg={messageModal}/>
              :<div>
-                <p>Deseja cancelar o cadastro ?</p><C.ButtonSave
+                  <p>Deseja cancelar o cadastro ?</p><C.ButtonSave
                   hove='#FF4560' 
                   onClick={handleExit} 
                   borde='#FF4560' 

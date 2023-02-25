@@ -32,12 +32,32 @@ export const Endereco = styled.div`
    div{
     display:flex;
    }
+
+   @media (max-width: 600px){
+      height: auto;
+        
+      div{
+         flex-direction: column;
+      }
+
+      span{
+         margin-left: 0px;
+      }
+        
+    }
 `
 
 export const ConatinerButton = styled.div`
    margin-left: 20px;
    margin-top: 50px;
    justify-content: end;
+   
+   @media (max-width: 600px){
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px;
+    }
 `
 
 export const ButtonSave = styled.button<{colorItem:string,borde?:string,hove:string}>`
@@ -53,6 +73,13 @@ export const ButtonSave = styled.button<{colorItem:string,borde?:string,hove:str
       cursor:pointer;
       background-color: ${props => props.hove};
 
+   }
+
+   @media (max-width: 600px){
+        width: 320px;
+        margin-left: 0px;
+        margin-top: 10px;
+        
    }
 
 `

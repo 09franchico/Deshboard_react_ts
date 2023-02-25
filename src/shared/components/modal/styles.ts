@@ -28,4 +28,14 @@ export const ModelBody = styled.div`
     color: white;
     box-shadow: 0px 0px 50px black;
 
+    @media (max-width: 600px){
+        width: 350px;
+        
+        p{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+        }
+   }
+
 `

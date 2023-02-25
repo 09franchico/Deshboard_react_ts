@@ -6,16 +6,19 @@ export const Container = styled.div`
      justify-content: center;
      align-items: center;
      flex-direction: column;
-
-
+     
 `
 
 export const Text = styled.div`
-padding: 10px;
-    
+   padding: 10px;
 
 `
 
 export const AreaButton = styled.div`
     padding: 10px;
+
+    @media (max-width: 600px){
+        display: flex;
+        padding: 0px;
+   }
 `

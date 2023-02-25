@@ -16,4 +16,8 @@ export const Button = styled.button<{colorItem:string,borde?:string,hove:string}
 
    }
 
+   @media (max-width: 600px){
+       margin: 5px;
+   }
+
 `

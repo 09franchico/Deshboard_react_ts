@@ -11,6 +11,7 @@ export const Container = styled.div`
         flex-direction: column;
         
     }
+
 `
 
 export const Menu = styled.div <{ slug: boolean }>`
@@ -89,7 +90,7 @@ export const HeaderLogin = styled.div`
 `
 
 export const Body = styled.div`
-    height: 100%;
+    height: 100vh;
     color: black;
     font-family: roboto;
 

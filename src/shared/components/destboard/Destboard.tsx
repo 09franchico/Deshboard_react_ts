@@ -13,7 +13,7 @@ type Props = {
 }
 
 export const DestBord = ({children,ferramentaListagem,tipo}:Props)=>{
-    const [stateMenu, setStateMenu] = useState(true);
+    const [stateMenu, setStateMenu] = useState(false);
 
     //Slug do menu
     const HandleClickIconMenu = ()=>{
@@ -34,9 +34,9 @@ export const DestBord = ({children,ferramentaListagem,tipo}:Props)=>{
                     <SiDwm size={30} display={stateMenu ? "":"none"}/>
                 </C.Icon>
                 <MenuItem/>
-                <C.ConfigLogout>
+                {/* <C.ConfigLogout>
                     <MdSettings size={30}/>
-                </C.ConfigLogout>
+                </C.ConfigLogout> */}
             </C.Menu>
             <C.ContainerBody>
                 <C.Header>
