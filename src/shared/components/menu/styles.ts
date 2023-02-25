@@ -40,6 +40,4 @@ export const Menu = styled.div`
         justify-content: center;
         align-items: center;
     }
-
-
 `

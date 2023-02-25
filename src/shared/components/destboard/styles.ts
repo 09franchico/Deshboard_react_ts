@@ -92,8 +92,13 @@ export const Body = styled.div`
     height: 100%;
     color: black;
     font-family: roboto;
-`
 
+    @media (max-width: 600px){
+        height: auto;
+        background-color: #1B213B;
+
+    }
+`
 
 export const ConfigLogout = styled.div`
    height: 100%;
@@ -106,7 +111,16 @@ export const ConfigLogout = styled.div`
         display: none;
         
     }
-
-   
-
 `
+
+export const IconMobile = styled.div`
+   display: none;
+
+   @media (max-width: 600px){
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        
+    }
+` 
