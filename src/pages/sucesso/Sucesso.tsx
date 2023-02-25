@@ -3,7 +3,11 @@ import { FcApproval } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import * as C from "./styles"
 
-export const Sucesso = ()=>{
+type Ppros = {
+    msg:string
+}
+
+export const Sucesso = ({msg}:Ppros)=>{
     const navigate = useNavigate()
 
     useEffect(()=>{
@@ -15,7 +19,7 @@ export const Sucesso = ()=>{
     return(
         <C.Container>
             <FcApproval size={100}/>
-            <p>Cadastro Realizado com SUCESSO!</p>
+            <p>{msg} realizado com SUCESSO!</p>
         </C.Container>
     )
 }

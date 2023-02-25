@@ -13,6 +13,7 @@ import * as C from './styles'
 export const PessoaCard = () => {
   const [modalStatus, setModalStatus] = useState(false)
   const [sucessoModal,setSucessoModal] = useState(false)
+  const [messageModal,setMessageModal] = useState('')
   const navigate = useNavigate()
   const { id = 'nova' } = useParams<'id'>();
   const formRef = useRef<FormHandles>(null)
@@ -56,6 +57,7 @@ export const PessoaCard = () => {
           if (result instanceof ApiException) {
             alert(result.message);
           } else {
+            setMessageModal('Cadastro')
             setSucessoModal(true)
             setModalStatus(true)
           }
@@ -71,7 +73,10 @@ export const PessoaCard = () => {
               if (result instanceof ApiException) {
                 alert(result.message);
               } else {
-                  navigate('/pessoa');
+                  setMessageModal('Update')
+                  setSucessoModal(true)
+                  setModalStatus(true)
+                  //navigate('/pessoa');
               }
             });
     }
@@ -123,9 +128,9 @@ export const PessoaCard = () => {
         </Vform>
         <Modal status={modalStatus} setStatusModal={setModalStatus}>
           {sucessoModal 
-             ? <Sucesso/>
+             ? <Sucesso msg={messageModal}/>
              :<div>
-                <p>Deseja cancelar o cadastro ?</p><C.ButtonSave 
+                <p>Deseja cancelar o cadastro ?</p><C.ButtonSave
                   hove='#FF4560' 
                   onClick={handleExit} 
                   borde='#FF4560' 
