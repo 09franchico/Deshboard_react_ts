@@ -6,6 +6,11 @@ export const Container = styled.div`
     background-color: #1B213B;
     min-height: 100vh;
     display: flex;
+
+    @media (max-width: 600px){
+        flex-direction: column;
+        
+    }
 `
 
 export const Menu = styled.div <{ slug: boolean }>`
@@ -24,6 +29,15 @@ export const Menu = styled.div <{ slug: boolean }>`
    hr{
       margin-top: 20px;
     }
+
+    @media (max-width: 600px){
+        height: ${props => props.slug ? "400px" : "0px"};
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: absolute;
+    }
       
 
 
@@ -36,6 +50,11 @@ export const Icon = styled.div`
     align-items: center;
     height: 29px;
     background-color: #1B213B;
+
+    @media (max-width: 600px){
+        display: none;
+        
+    }
 
 `
 
@@ -82,5 +101,12 @@ export const ConfigLogout = styled.div`
    justify-content: center;
    align-items: center;
    flex-direction: column;
+
+   @media (max-width: 600px){
+        display: none;
+        
+    }
+
+   
 
 `
