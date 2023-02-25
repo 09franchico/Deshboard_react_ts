@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const Container = styled.div<{ativo:boolean}>`
+export const Container = styled.div<{ ativo: boolean }>`
     display: ${props => props.ativo ? "flex" : "none"};
     margin: 80px 10px 10px 10px;
     justify-content:space-between;
@@ -19,7 +19,7 @@ export const Container = styled.div<{ativo:boolean}>`
         color: white;
         cursor: pointer;
     }
-
+    
     input{
         width: 300px;
         height: 25px;
@@ -28,6 +28,13 @@ export const Container = styled.div<{ativo:boolean}>`
         background-color: white;
         padding: 5px;
 
+    @media (max-width: 600px){
+         width: 180px;
+         height: 20px;
+    
     }
+
+    }
+
 
 `

@@ -16,16 +16,39 @@ export const Container = styled.div`
         border-radius: 2px;
     }
     td{
-        padding: 10px;
         border-bottom: 1px solid grey;
     }
+
+
+    @media (max-width: 600px){
+
+        table{
+            font-size: 10px;
+        }
+
+        tr{
+            width: 0px;
+        }
+
+        td{
+            width: 0px;
+            padding: 0px;
+       
+        }
+        
+      }
 `
 
 export const Td = styled.td`
     text-align: center;
-    width: 10px;
+    width: 0px;
     :hover{
         cursor: pointer;
+    }
+
+    @media (max-width: 600px){
+        width: 0px;
+
     }
 
 `

@@ -3,14 +3,16 @@ import * as C from "./styles"
 import { useEffect, useState } from "react"
 import { IPessoa, PessoaService } from "../../../shared/services/pessoa/PessoaService"
 import { ApiException } from "../../../shared/services/ApiException"
-import { MdCreate, MdDeleteOutline } from "react-icons/md"
-import { Modal, ModalDelete } from "../../../shared/components/modal"
+import { MdCreate, MdDeleteOutline,MdOutlinePersonalVideo } from "react-icons/md"
+import { Modal, ModalDelete, Viewdata } from "../../../shared/components/modal"
 import { useNavigate } from "react-router-dom"
 
 export const Pessoa = () => {
   const [modalStatus, setModalStatus] = useState(false)
+  const [statusModalItem, setStatusModalItem] = useState(false)
   const [idPessoa , setIdPessoa] = useState(0)
   const [pessoa, setPessoa] = useState<IPessoa[]>([])
+  const [pessoaItem, setPessoaItem] = useState<IPessoa>()
   const [loading,setLoading] = useState(false);
 
   const navigate = useNavigate()
@@ -36,11 +38,21 @@ export const Pessoa = () => {
 
   }
 
-  //Update Pessoa
-  const handleUpdate = (id:number)=>{
-     console.log("----------->",id)
+  const handleViewItem = (id:number) =>{
+    PessoaService.getById(Number(id))
+        .then((result) => {
+          if (result instanceof Error) {
+            alert(result.message);
+            navigate('/pessoa');
+          } else {
+             setStatusModalItem(true)
+             setPessoaItem(result)
+            
+          }
+        });
 
   }
+
 
   return (
     <DestBord ferramentaListagem={true} tipo='pessoa'>
@@ -51,10 +63,6 @@ export const Pessoa = () => {
               <td>Nome</td>
               <td>Sobrenome</td>
               <td>Email</td>
-              <td>Rua</td>
-              <td>Bairro</td>
-              <td>Numero</td>
-              <td>Complemento</td>
               <td>Ação</td>
             </tr>
           </thead>
@@ -65,12 +73,9 @@ export const Pessoa = () => {
                   <td >{item.nome}</td>
                   <td >{item.sobrenome}</td>
                   <td >{item.email}</td>
-                  <td >{item.endereco.rua}</td>
-                  <td >{item.endereco.bairro}</td>
-                  <td >{item.endereco.numero}</td>
-                  <td >{item.endereco.complemento}</td>
-                  <C.Td onClick={() => handleDalete(parseInt(item.id))}><MdDeleteOutline size={25}/></C.Td>
-                  <C.Td><MdCreate size={25} onClick={() => navigate(`/pessoa/detalhe/${item.id}`)}/></C.Td>
+                  <C.Td onClick={() => handleDalete(parseInt(item.id))}><MdDeleteOutline size={20}/></C.Td>
+                  <C.Td><MdCreate size={20} onClick={() => navigate(`/pessoa/detalhe/${item.id}`)}/></C.Td>
+                  <C.Td><MdOutlinePersonalVideo size={20} onClick={()=>handleViewItem(parseInt(item.id))}/></C.Td>
                 </tr>
               ))
             }
@@ -83,6 +88,10 @@ export const Pessoa = () => {
                setStatusModel={setModalStatus}
                setData={setPessoa}/>
         </Modal>
+        <Viewdata 
+             slug={statusModalItem} 
+             data={pessoaItem} 
+             setStatusModalItem={setStatusModalItem}/>
       </C.Container>
     </DestBord >
   )

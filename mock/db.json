@@ -3,38 +3,26 @@
     {
       "nome": "Tiago Souza Pimentel",
       "sobrenome": "Santos de Souza",
+      "email": "francisco@gmail.com",
+      "endereco": {
+        "rua": "awdawdawd",
+        "numero": "12",
+        "bairro": "",
+        "complemento": ""
+      },
+      "id": 1
+    },
+    {
+      "nome": "Francisco Santos de Souza Filho",
+      "sobrenome": "Santos de Souza",
       "email": "",
       "endereco": {
-        "rua": "Rua Nova babel",
-        "numero": "awdawdaw",
-        "bairro": "Crespo",
-        "complemento": ""
+        "rua": "awdawdawd",
+        "numero": "1",
+        "bairro": "awdawd",
+        "complemento": "awdawdawd"
       },
       "id": 2
-    },
-    {
-      "nome": "Tiago Souza Pimentel",
-      "sobrenome": "Santos de Souza",
-      "email": "",
-      "endereco": {
-        "rua": "",
-        "numero": "",
-        "bairro": "",
-        "complemento": ""
-      },
-      "id": 3
-    },
-    {
-      "nome": "Francisco Santos de Souza",
-      "sobrenome": "Santos de Souza",
-      "email": "",
-      "endereco": {
-        "rua": "",
-        "numero": "",
-        "bairro": "",
-        "complemento": ""
-      },
-      "id": 4
     }
   ]
 }

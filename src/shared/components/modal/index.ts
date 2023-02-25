@@ -1,2 +1,3 @@
-export {Modal}from './Modal'
-export {ModalDelete}from './delete/ModalDelete'
+export * from './Modal'
+export * from './delete/ModalDelete'
+export * from './viewData/ViewData'
