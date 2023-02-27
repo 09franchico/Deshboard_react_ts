@@ -1,10 +1,12 @@
 import * as C from "./styles"
-import {ReactNode, useState} from "react"
+import {ReactNode, useContext, useState} from "react"
 import { MenuItem } from "../menu";
 import { MdMenu,MdSettings} from "react-icons/md";
 import { FerramentaListagem } from "../ferramenta_listagem/FerramentaListagem";
 import { MdAccountCircle,MdClear } from "react-icons/md";
 import { SiDwm } from "react-icons/si";
+import { AuthContext } from "../../contexts/auth/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
     children: ReactNode;
@@ -13,6 +15,8 @@ type Props = {
 }
 
 export const DestBord = ({children,ferramentaListagem,tipo}:Props)=>{
+    const auth = useContext(AuthContext);
+    const navigate = useNavigate();
     const [stateMenu, setStateMenu] = useState(false);
 
     //Slug do menu
@@ -22,6 +26,12 @@ export const DestBord = ({children,ferramentaListagem,tipo}:Props)=>{
         }else{
             setStateMenu(true)
         }
+    }
+
+    const handleSignout = ()=>{
+        auth.signout();
+        navigate("/login")
+        
     }
 
     return(
@@ -42,7 +52,8 @@ export const DestBord = ({children,ferramentaListagem,tipo}:Props)=>{
                 <C.Header>
                     <MdMenu onClick={HandleClickIconMenu} style={{cursor:"pointer"}} size={45}/>
                     <C.HeaderLogin>
-                        <MdAccountCircle size={30}/>
+                        <MdAccountCircle onClick={handleSignout} size={30}/>
+                        {auth.user?.name}
                     </C.HeaderLogin>
                 </C.Header>
                 <C.Body>

@@ -1,26 +1,28 @@
 
 import {createBrowserRouter,} from "react-router-dom";
 import { Grafico } from "../pages/grafico";
+import { Login } from "../pages/login";
 import { Pessoa, PessoaCard } from "../pages/pessoa";
 import { Sucesso } from "../pages/sucesso";
+import { RequireAuth } from "../shared/contexts/auth/RequireAuth";
 import { ErrorPage } from "./error/ErrorPage";
 
 export const Router = createBrowserRouter([
   {
     path: "/",
-    element: <Grafico/>,
+    element:<RequireAuth><Grafico/></RequireAuth>,
     errorElement:<ErrorPage/>
   },
   {
+    path:"/login",
+    element:<Login/>
+  },
+  {
     path:"/pessoa",
-    element:<Pessoa/>
+    element:<RequireAuth><Pessoa/></RequireAuth>
   },
   {
     path:"/pessoa/detalhe/:id",
-    element:<PessoaCard/>
-  },
-  {
-    path:"/sucesso",
-    element:<Sucesso/>
+    element:<RequireAuth><PessoaCard/></RequireAuth>
   }
 ]);
