@@ -31,10 +31,10 @@ export const Items = styled.div<{stylo:string}>`
 `
 
 export const Grafico = styled.div`
-   margin-top: 50px;
+   margin-top: 80px;
    padding: 20px;
    display: flex;
-   justify-content: center;
+   justify-content: space-between;
    align-items: center;
 
    @media (max-width: 600px){
