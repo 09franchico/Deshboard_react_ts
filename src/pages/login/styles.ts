@@ -8,6 +8,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: #F3F4F5;
 
      img{
         margin-top: 407px;

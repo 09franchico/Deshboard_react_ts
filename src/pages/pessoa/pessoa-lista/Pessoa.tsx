@@ -3,7 +3,7 @@ import * as C from "./styles"
 import { useEffect, useState } from "react"
 import { IPessoa, PessoaService } from "../../../shared/services/pessoa/PessoaService"
 import { ApiException } from "../../../shared/services/ApiException"
-import { MdCreate, MdDeleteOutline,MdOutlinePersonalVideo } from "react-icons/md"
+import { MdCreate, MdDeleteOutline, MdOutlineRemoveRedEye, MdRemoveRedEye } from "react-icons/md"
 import { Modal, ModalDelete, Viewdata } from "../../../shared/components/modal"
 import { useNavigate } from "react-router-dom"
 
@@ -73,9 +73,9 @@ export const Pessoa = () => {
                   <td >{item.nome}</td>
                   <td >{item.sobrenome}</td>
                   <td >{item.email}</td>
-                  <C.Td onClick={() => handleDalete(parseInt(item.id))}><MdDeleteOutline size={20}/></C.Td>
-                  <C.Td><MdCreate size={20} onClick={() => navigate(`/pessoa/detalhe/${item.id}`)}/></C.Td>
-                  <C.Td><MdOutlinePersonalVideo size={20} onClick={()=>handleViewItem(parseInt(item.id))}/></C.Td>
+                  <C.Td onClick={() => handleDalete(parseInt(item.id))}><MdDeleteOutline size={25}/></C.Td>
+                  <C.Td><MdCreate size={25} onClick={() => navigate(`/pessoa/detalhe/${item.id}`)}/></C.Td>
+                  <C.Td><MdRemoveRedEye size={25} onClick={()=>handleViewItem(parseInt(item.id))}/></C.Td>
                 </tr>
               ))
             }
