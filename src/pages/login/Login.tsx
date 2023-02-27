@@ -43,7 +43,6 @@ export const Login = ()=>{
                     <C.Button>Entrar</C.Button>
                  </VformLoginStyle>
             </C.ViewLogin>
-            <img src={onda} alt=""  />
         </C.Container>
     )
 

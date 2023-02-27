@@ -1,7 +1,7 @@
 import * as C from "./styles"
 import {ReactNode, useContext, useState} from "react"
 import { MenuItem } from "../menu";
-import { MdMenu,MdSettings} from "react-icons/md";
+import { MdLogout, MdMenu,MdSettings} from "react-icons/md";
 import { FerramentaListagem } from "../ferramenta_listagem/FerramentaListagem";
 import { MdAccountCircle,MdClear } from "react-icons/md";
 import { SiDwm } from "react-icons/si";
@@ -52,8 +52,8 @@ export const DestBord = ({children,ferramentaListagem,tipo}:Props)=>{
                 <C.Header>
                     <MdMenu onClick={HandleClickIconMenu} style={{cursor:"pointer"}} size={45}/>
                     <C.HeaderLogin>
-                        <MdAccountCircle onClick={handleSignout} size={30}/>
-                        {auth.user?.name}
+                        <MdAccountCircle size={30}/>
+                        <MdLogout onClick={handleSignout} style={{cursor:"pointer"}} size={28}/>
                     </C.HeaderLogin>
                 </C.Header>
                 <C.Body>
