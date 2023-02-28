@@ -60,10 +60,10 @@ export const Pessoa = () => {
         <table>
           <thead>
             <tr>
-              <td>Nome</td>
-              <td>Sobrenome</td>
-              <td>Email</td>
-              <td>Ação</td>
+              <td style={{width:"500px"}}>Nome</td>
+              <td style={{textAlign:"end",width:"300px"}}>Sobrenome</td>
+              <td style={{textAlign:"end"}}>Email</td>
+              <td style={{textAlign:"center",width:"120px"}}>Ação</td>
             </tr>
           </thead>
           <tbody>
@@ -71,11 +71,13 @@ export const Pessoa = () => {
               pessoa?.map((item) => (
                 <tr key={item.id}>
                   <td >{item.nome}</td>
-                  <td >{item.sobrenome}</td>
-                  <td >{item.email}</td>
-                  <C.Td onClick={() => handleDalete(parseInt(item.id))}><MdDeleteOutline size={25}/></C.Td>
-                  <C.Td><MdCreate size={25} onClick={() => navigate(`/pessoa/detalhe/${item.id}`)}/></C.Td>
-                  <C.Td><MdRemoveRedEye size={25} onClick={()=>handleViewItem(parseInt(item.id))}/></C.Td>
+                  <td style={{textAlign:"end"}}>{item.sobrenome}</td>
+                  <td style={{textAlign:"end"}}>{item.email}</td>
+                  <C.Td >
+                      <MdDeleteOutline size={25} onClick={() => handleDalete(parseInt(item.id))}/>
+                      <MdCreate size={25} onClick={() => navigate(`/pessoa/detalhe/${item.id}`)}/>
+                      <MdRemoveRedEye size={25} onClick={()=>handleViewItem(parseInt(item.id))}/>
+                  </C.Td>
                 </tr>
               ))
             }

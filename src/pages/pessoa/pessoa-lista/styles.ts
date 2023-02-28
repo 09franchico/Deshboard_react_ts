@@ -51,7 +51,8 @@ export const Container = styled.div`
 
 export const Td = styled.td`
     text-align: center;
-    width: 0px;
+    flex-direction: row;
+    width: 80px;
     :hover{
         cursor: pointer;
     }
