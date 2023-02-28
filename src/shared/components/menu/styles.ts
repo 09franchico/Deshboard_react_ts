@@ -18,7 +18,7 @@ export const MenuIcon = styled.div`
    :hover{
       background-color: #303030;
       cursor: pointer;
-      border-left: 5px solid #00E396;
+      border-left: 5px solid #008FFB;
    }
    p{
     margin-left: 10px;

@@ -20,6 +20,13 @@ export const Container = styled.div`
         font-size: 15px;
         font-weight: bolder;
     }
+    thead{
+        
+        td{
+          font-size: 20px;
+          font-weight: bolder;
+        }
+    }
 
 
     @media (max-width: 600px){
