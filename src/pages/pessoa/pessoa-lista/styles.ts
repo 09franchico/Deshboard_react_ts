@@ -17,6 +17,8 @@ export const Container = styled.div`
     }
     td{
         border-bottom: 1px solid grey;
+        font-size: 15px;
+        font-weight: bolder;
     }
 
 
@@ -33,6 +35,7 @@ export const Container = styled.div`
         td{
             width: 0px;
             padding: 0px;
+            font-size: 10px;
        
         }
         
