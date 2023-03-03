@@ -1,9 +1,11 @@
 import { ApiException } from "../ApiException";
 import { Api } from "../ApiConfig";
+import { User } from "../../types/User";
 
 
 export interface IToken {
-   token:string
+   data:string
+   message:string
 }
 
 export interface ILogout {
@@ -11,9 +13,9 @@ export interface ILogout {
 }
 
 
-const signin = async (username: string, password: string): Promise<IToken | ApiException> => {
+const signin = async (email: string, password: string): Promise<IToken | ApiException> => {
 try {
-  const { data } = await Api().post('/auth',{ username, password });
+  const { data } = await Api().post('/auth/login',{ email, password });
   return data;
 } catch (error: any) {
   return new ApiException(error.message || 'Erro ao buscar os registros.');
@@ -21,9 +23,9 @@ try {
 };
 
 
-const validateToken = async (token:string): Promise<IToken | ApiException> => {
+const validateToken = async (token:string): Promise<User | ApiException> => {
   try {
-    const { data } = await Api().post('/activate',{ token });
+    const { data } = await Api().post('/auth/validate',{ token });
     return data;
   } catch (error: any) {
     return new ApiException(error.message || 'Erro ao buscar os registros.');

@@ -4,32 +4,32 @@ import { User } from "../../types/User";
 import { AuthContext } from "./AuthContext";
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
-    const [user, setUser] = useState<IToken | null>(null);
+    const [user, setUser] = useState<User | null>(null)
 
     useEffect(() => {
         const validateToken = async () => {
             const storageData = localStorage.getItem('authToken');
+            console.log(storageData)
             if (storageData) {
                 const data = await authService.validateToken(storageData);
                 if (data instanceof Error) {
                     return data.message;
                   } else {
-                     setUser(data);
-                    
+                    setUser(data);
                   }
             }
         }
         validateToken();
     }, []);
 
+    
     const signin = async (email: string, password: string) => {
-        const data = await authService.signin(email, password);
-        if (data instanceof Error) {
+        const token = await authService.signin(email, password);
+        if (token instanceof Error) {
             return false
           } else {
-            setToken(data.token);
+            setToken(token.data);
             return true;
-            
           }
     }
 

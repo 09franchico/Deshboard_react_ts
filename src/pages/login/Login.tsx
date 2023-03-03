@@ -22,7 +22,7 @@ export const Login = ()=>{
         if(data.email && data.password){
             const isLogged = await auth.signin(data.email, data.password);
             if (isLogged) {
-                navigate('/');
+                navigate('/pessoa');
             } else {
                 alert("Requizição falhou");
             }
