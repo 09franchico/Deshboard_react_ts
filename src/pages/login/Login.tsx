@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 
 type DataLogin = {
     email:string,
-    senha:string
+    password:string
 }
 
 export const Login = ()=>{
@@ -19,12 +19,12 @@ export const Login = ()=>{
     const formRef = useRef<FormHandles>(null)
 
     const handleSubmit = async (data:DataLogin)=>{
-        if(data.email && data.senha){
-            const isLogged = await auth.signin(data.senha, data.senha);
+        if(data.email && data.password){
+            const isLogged = await auth.signin(data.email, data.password);
             if (isLogged) {
                 navigate('/');
             } else {
-                alert("Não deu certo.");
+                alert("Requizição falhou");
             }
 
         }
@@ -37,8 +37,8 @@ export const Login = ()=>{
                  <FcCdLogo size={40}/>
                  <VformLoginStyle ref={formRef} onSubmit={handleSubmit}>
                     <div>
-                     <VformLogin name='email' type="email" label='Email' tamanho={340} /><br />
-                     <VformLogin name='senha' type="password" label='Senha' tamanho={340} />
+                     <VformLogin name='email' type="text" label='Email' tamanho={340} /><br />
+                     <VformLogin name='password' type="password" label='Senha' tamanho={340} />
                     </div>
                     <C.Button>Entrar</C.Button>
                  </VformLoginStyle>

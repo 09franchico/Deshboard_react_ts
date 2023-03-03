@@ -53,7 +53,7 @@ export const Pessoa = () => {
 
   }
 
-
+  
   return (
     <DestBord ferramentaListagem={true} tipo='pessoa'>
       <C.Container>

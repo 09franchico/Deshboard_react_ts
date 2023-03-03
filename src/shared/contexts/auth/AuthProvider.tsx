@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
-import { authService } from "../../services/auth/authService";
+import { authService, IToken } from "../../services/auth/authService";
 import { User } from "../../types/User";
 import { AuthContext } from "./AuthContext";
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<IToken | null>(null);
 
     useEffect(() => {
         const validateToken = async () => {
             const storageData = localStorage.getItem('authToken');
             if (storageData) {
                 const data = await authService.validateToken(storageData);
-                if (data.user) {
-                    setUser(data.user);
-                }
+                if (data instanceof Error) {
+                    return data.message;
+                  } else {
+                     setUser(data);
+                    
+                  }
             }
         }
         validateToken();
@@ -21,12 +24,13 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
     const signin = async (email: string, password: string) => {
         const data = await authService.signin(email, password);
-        if (data.user && data.token) {
-            setUser(data.user);
+        if (data instanceof Error) {
+            return false
+          } else {
             setToken(data.token);
             return true;
-        }
-        return false;
+            
+          }
     }
 
     const signout = async () => {
