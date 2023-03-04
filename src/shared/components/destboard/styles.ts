@@ -87,6 +87,11 @@ export const HeaderLogin = styled.div`
   align-items: center;
   margin-right: 20px;
 
+  h3{
+    margin-right: 10px;
+    margin-left: 5px;
+  }
+
 `
 
 export const Body = styled.div`

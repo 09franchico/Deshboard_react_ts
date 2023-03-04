@@ -1,6 +1,6 @@
 import {  useNavigate } from "react-router-dom";
 import * as C from "./styles"
-import { MdHome,MdSupervisorAccount,MdPostAdd,MdQueryStats,MdMapsHomeWork } from "react-icons/md";
+import { MdHome,MdSupervisorAccount,MdPostAdd,MdQueryStats,MdMapsHomeWork, MdPersonAddAlt1 } from "react-icons/md";
 
 export const MenuItem = ()=>{
     const navigate = useNavigate()
@@ -15,6 +15,11 @@ export const MenuItem = ()=>{
         
     }
 
+    const HandleUsuario = ()=>{
+        navigate("/usuario")
+        
+    }
+
     return(
         <C.Container>
             <C.Menu>
@@ -22,13 +27,13 @@ export const MenuItem = ()=>{
                     <MdHome size={25}/>
                     <p>Destbord</p>
                 </C.MenuIcon>
+                <C.MenuIcon onClick={HandleUsuario}>
+                    <MdPersonAddAlt1 size={25}/>
+                    <p>Usuario</p>
+                </C.MenuIcon>
                 <C.MenuIcon onClick={HandleClick}>
                     <MdSupervisorAccount size={25}/>
                     <p>Pessoa</p>
-                </C.MenuIcon>
-                <C.MenuIcon >
-                    <MdPostAdd size={25}/>
-                    <p>Produto</p>
                 </C.MenuIcon>
                 <C.MenuIcon >
                     <MdQueryStats size={25}/>

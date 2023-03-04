@@ -4,6 +4,7 @@ import { Grafico } from "../pages/grafico";
 import { Login } from "../pages/login";
 import { Pessoa, PessoaCard } from "../pages/pessoa";
 import { Sucesso } from "../pages/sucesso";
+import { Usuario } from "../pages/usuario";
 import { RequireAuth } from "../shared/contexts/auth/RequireAuth";
 import { ErrorPage } from "./error/ErrorPage";
 
@@ -24,5 +25,9 @@ export const Router = createBrowserRouter([
   {
     path:"/pessoa/detalhe/:id",
     element:<RequireAuth><PessoaCard/></RequireAuth>
-  }
+  },
+  {
+    path:"/usuario",
+    element:<RequireAuth><Usuario/></RequireAuth>
+  },
 ]);
