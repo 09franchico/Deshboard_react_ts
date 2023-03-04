@@ -1,17 +1,18 @@
 import { DestBord } from "../../../shared/components/destboard"
 import * as C from "./styles"
 import { useEffect, useState } from "react"
-import { IPessoa, IpessoaData, PessoaService } from "../../../shared/services/pessoa/PessoaService"
+import { PessoaService } from "../../../shared/services/pessoa/PessoaService"
 import { ApiException } from "../../../shared/services/ApiException"
 import { MdCreate, MdDeleteOutline, MdOutlineRemoveRedEye, MdRemoveRedEye } from "react-icons/md"
 import { Modal, ModalDelete, Viewdata } from "../../../shared/components/modal"
 import { useNavigate } from "react-router-dom"
+import { IPessoa, IpessoaData } from "../../../shared/types/Pessoa"
 
 export const Pessoa = () => {
   const [modalStatus, setModalStatus] = useState(false)
   const [statusModalItem, setStatusModalItem] = useState(false)
   const [idPessoa , setIdPessoa] = useState(0)
-  const [pessoa, setPessoa] = useState<IpessoaData>()
+  const [pessoa, setPessoa] = useState<IpessoaData>({data:[],message:""})
   const [pessoaItem, setPessoaItem] = useState<IPessoa>()
   const [loading,setLoading] = useState(false);
 
@@ -88,6 +89,7 @@ export const Pessoa = () => {
                url="/pessoa"
                idDelete ={idPessoa} 
                setStatusModel={setModalStatus}
+               setData={setPessoa}
                />
         </Modal>
         <Viewdata 

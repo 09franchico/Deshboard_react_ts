@@ -26,7 +26,7 @@ export const Login = ()=>{
                 navigate('/');
                 window.location.reload();
             } else {
-               setErrorLogin("Email ou senha invalida!!")
+               setErrorLogin("Email ou senha incorreta")
             }
 
         }
@@ -43,9 +43,11 @@ export const Login = ()=>{
                      <VformLogin name='password' type="password" label='Senha' tamanho={340} />
                     </div>
                     <C.Button>Entrar</C.Button>
-                    <div>
-                        {errorLogin}
-                    </div>
+                    { errorLogin &&
+                        <C.Error pd="5px">
+                          {errorLogin}
+                        </C.Error>
+                    }
                  </VformLoginStyle>
             </C.ViewLogin>
         </C.Container>

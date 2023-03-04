@@ -15,30 +15,30 @@ export interface ILogout {
 
 const signin = async (email: string, password: string): Promise<IToken | ApiException> => {
 try {
-  const { data } = await Api().post('/auth/login',{ email, password });
+  const { data } = await Api.post('/auth/login',{ email, password });
   return data;
 } catch (error: any) {
-  return new ApiException(error.message || 'Erro ao buscar os registros.');
+  return new ApiException(error.message || 'Erro ao fazer login');
 }
 };
 
 
 const validateToken = async (token:string): Promise<User | ApiException> => {
   try {
-    const { data } = await Api().post('/auth/validate',{ token });
+    const { data } = await Api.post('/auth/validate',{ token });
     return data;
   } catch (error: any) {
-    return new ApiException(error.message || 'Erro ao buscar os registros.');
+    return new ApiException(error.message || 'Erro ao validarToken.');
   }
 };
 
 const logout = async (): Promise<ILogout| ApiException> => {
   try {
     return { status: true };
-    const response = await Api().post('/logout');
+    const response = await Api.post('/logout');
     //return data;
   } catch (error: any) {
-    return new ApiException(error.message || 'Erro ao buscar os registros.');
+    return new ApiException(error.message || 'Erro ao realizar logout.');
   }
 };
 

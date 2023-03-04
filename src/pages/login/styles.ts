@@ -46,7 +46,13 @@ export const Button = styled.button`
         background-color: #00E380;
         cursor: pointer;
     }
-    
 
+`
 
+export const Error = styled.div<{pd:string}>`
+    margin-top: 5px;
+    background-color: red;
+    padding: ${props => props.pd};
+    color: white;
+    width: 200px;
 `

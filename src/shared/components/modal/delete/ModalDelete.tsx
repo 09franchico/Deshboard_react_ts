@@ -5,7 +5,7 @@ import * as C from './styles'
 type Props = {
     setStatusModel:React.Dispatch<React.SetStateAction<boolean>>
     url?:string
-    setData?:React.Dispatch<React.SetStateAction<IpessoaData>>
+    setData:React.Dispatch<React.SetStateAction<IpessoaData>>
     idDelete:number
 }
 
