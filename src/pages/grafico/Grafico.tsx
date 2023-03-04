@@ -90,7 +90,7 @@ export const Grafico = ()=>{
         if (result instanceof ApiException) {
           alert(result.message);
         } else {
-          setPessoa(result);
+          setPessoa(result.data);
         }
       });
   }, []);

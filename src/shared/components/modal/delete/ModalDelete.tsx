@@ -1,11 +1,11 @@
-import { IPessoa } from '../../../services/pessoa/PessoaService'
+import { IPessoa, IpessoaData } from '../../../services/pessoa/PessoaService'
 import { ButtonDest } from '../../botao'
 import * as C from './styles'
 
 type Props = {
     setStatusModel:React.Dispatch<React.SetStateAction<boolean>>
     url?:string
-    setData:React.Dispatch<React.SetStateAction<IPessoa[]>>
+    setData?:React.Dispatch<React.SetStateAction<IpessoaData>>
     idDelete:number
 }
 

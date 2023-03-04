@@ -53,6 +53,7 @@ export const DestBord = ({children,ferramentaListagem,tipo}:Props)=>{
                     <MdMenu onClick={HandleClickIconMenu} style={{cursor:"pointer"}} size={45}/>
                     <C.HeaderLogin>
                         <MdAccountCircle size={30} style={{cursor:"pointer"}}/>
+                        {auth.user?.name}
                         <MdLogout onClick={handleSignout} style={{cursor:"pointer"}} size={28}/>
                     </C.HeaderLogin>
                 </C.Header>

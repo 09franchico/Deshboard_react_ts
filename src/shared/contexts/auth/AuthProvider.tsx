@@ -9,7 +9,6 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     useEffect(() => {
         const validateToken = async () => {
             const storageData = localStorage.getItem('authToken');
-            console.log(storageData)
             if (storageData) {
                 const data = await authService.validateToken(storageData);
                 if (data instanceof Error) {

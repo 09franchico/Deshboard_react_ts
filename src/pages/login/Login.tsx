@@ -2,7 +2,7 @@ import * as C from './styles'
 import onda from "../../assets/onda.svg"
 import { Vform,VformLoginStyle } from '../../shared/forms/styles'
 import { FormHandles } from '@unform/core'
-import { useRef,useContext } from 'react'
+import { useRef,useContext,useState } from 'react'
 import { VformLogin } from '../../shared/forms/VformeLogin'
 import { FcCdLogo} from "react-icons/fc";
 import { AuthContext } from '../../shared/contexts/auth/AuthContext'
@@ -17,14 +17,16 @@ export const Login = ()=>{
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
     const formRef = useRef<FormHandles>(null)
+    const [errorLogin, setErrorLogin ] = useState('')
 
     const handleSubmit = async (data:DataLogin)=>{
         if(data.email && data.password){
             const isLogged = await auth.signin(data.email, data.password);
             if (isLogged) {
-                navigate('/pessoa');
+                navigate('/');
+                window.location.reload();
             } else {
-                alert("Requizição falhou");
+               setErrorLogin("Email ou senha invalida!!")
             }
 
         }
@@ -41,6 +43,9 @@ export const Login = ()=>{
                      <VformLogin name='password' type="password" label='Senha' tamanho={340} />
                     </div>
                     <C.Button>Entrar</C.Button>
+                    <div>
+                        {errorLogin}
+                    </div>
                  </VformLoginStyle>
             </C.ViewLogin>
         </C.Container>

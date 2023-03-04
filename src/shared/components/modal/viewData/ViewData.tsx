@@ -41,15 +41,15 @@ export const Viewdata = ({slug,data,setStatusModalItem}:Props)=>{
          <div>
               <C.Span>
                   <h2>Bairro:</h2>
-                  <p>{data?.endereco.bairro?data?.endereco.bairro:"------------"}</p>
+                  <p>{data?.bairro?data?.bairro:"------------"}</p>
                </C.Span>
                <C.Span>
                   <h2>Rua:</h2>
-                  <p>{data?.endereco.rua}</p>
+                  <p>{data?.rua}</p>
                </C.Span>
                <C.Span>
                   <h2>Complemento:</h2>
-                  <p>{data?.endereco.complemento?data?.endereco.complemento:"-------------------" }</p>
+                  <p>{data?.complemento?data?.complemento:"-------------------" }</p>
                </C.Span>
          </div>
          <C.ConatinerBuuton>

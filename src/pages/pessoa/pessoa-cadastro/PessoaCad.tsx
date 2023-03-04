@@ -36,12 +36,10 @@ export const PessoaCard = () => {
         sobrenome:'',
         telefone:'',
         email:'',
-        endereco:{
-            rua:'',
-            bairro:'',
-            numero:'',
-            complemento:''
-    }
+        rua:'',
+        bairro:'',
+        numero:'',
+        complemento:''
       });
     }
   }, [id]);
@@ -107,12 +105,12 @@ export const PessoaCard = () => {
           <C.Endereco>
             <span>Endereço Residencial:</span>
             <div>
-                <VformPessoa name='endereco.rua' label='Rua' tamanho={500} />
-                <VformPessoa name='endereco.numero' label='Numero' tamanho={100} />
+                <VformPessoa name='rua' label='Rua' tamanho={500} />
+                <VformPessoa name='numero' label='Numero' tamanho={100} />
             </div>
             <div>
-              <VformPessoa name='endereco.bairro' label='Bairro' tamanho={200} />
-              <VformPessoa name='endereco.complemento' label='Complemento' tamanho={400} />
+              <VformPessoa name='bairro' label='Bairro' tamanho={200} />
+              <VformPessoa name='complemento' label='Complemento' tamanho={400} />
             </div>
             <C.ConatinerButton>
                 <C.ButtonSave 

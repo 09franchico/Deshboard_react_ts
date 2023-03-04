@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { ApiException } from '../../services/ApiException'
-import { IPessoa, PessoaService } from '../../services/pessoa/PessoaService'
+import { IPessoa, IpessoaData, PessoaService } from '../../services/pessoa/PessoaService'
 import * as C from './styles'
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
     url?:string
     setStatusModel:React.Dispatch<React.SetStateAction<boolean>>
     idDelete?:number
-    setData:React.Dispatch<React.SetStateAction<IPessoa[]>>
+    setData?:React.Dispatch<React.SetStateAction<IpessoaData>>
 }
 export const ButtonDest = ({colorItem,borde,hove,value,url,setStatusModel,idDelete,setData}:Props)=>{
     const navigate = useNavigate()
@@ -25,9 +25,9 @@ export const ButtonDest = ({colorItem,borde,hove,value,url,setStatusModel,idDele
                 alert(result.message);
             } else {
                 navigate(url)
-                setData(pess => [
-                    ...pess.filter(pessoa => parseInt(pessoa.id) !== idDelete),
-                  ]);
+                // setData(pess => [
+                //     ...pess.data.filter(pessoa => parseInt(pessoa.id) !== idDelete),
+                //   ]);
                 setStatusModel(false)
             }
             })

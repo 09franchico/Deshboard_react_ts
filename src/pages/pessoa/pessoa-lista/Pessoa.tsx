@@ -1,7 +1,7 @@
 import { DestBord } from "../../../shared/components/destboard"
 import * as C from "./styles"
 import { useEffect, useState } from "react"
-import { IPessoa, PessoaService } from "../../../shared/services/pessoa/PessoaService"
+import { IPessoa, IpessoaData, PessoaService } from "../../../shared/services/pessoa/PessoaService"
 import { ApiException } from "../../../shared/services/ApiException"
 import { MdCreate, MdDeleteOutline, MdOutlineRemoveRedEye, MdRemoveRedEye } from "react-icons/md"
 import { Modal, ModalDelete, Viewdata } from "../../../shared/components/modal"
@@ -11,7 +11,7 @@ export const Pessoa = () => {
   const [modalStatus, setModalStatus] = useState(false)
   const [statusModalItem, setStatusModalItem] = useState(false)
   const [idPessoa , setIdPessoa] = useState(0)
-  const [pessoa, setPessoa] = useState<IPessoa[]>([])
+  const [pessoa, setPessoa] = useState<IpessoaData>()
   const [pessoaItem, setPessoaItem] = useState<IPessoa>()
   const [loading,setLoading] = useState(false);
 
@@ -68,7 +68,7 @@ export const Pessoa = () => {
           </thead>
           <tbody>
             {
-              pessoa?.map((item) => (
+              pessoa?.data.map((item) => (
                 <tr key={item.id}>
                   <td >{item.nome}</td>
                   <td style={{textAlign:"end"}}>{item.sobrenome}</td>
@@ -88,7 +88,7 @@ export const Pessoa = () => {
                url="/pessoa"
                idDelete ={idPessoa} 
                setStatusModel={setModalStatus}
-               setData={setPessoa}/>
+               />
         </Modal>
         <Viewdata 
              slug={statusModalItem} 
