@@ -1,23 +1,26 @@
 import { DestBord } from "../../shared/components/destboard"
 import Chart from 'react-apexcharts'
-import {useEffect,useState} from "react"
+import { useEffect, useState } from "react"
 import * as C from "./styles"
 import { ApexOptions } from "apexcharts"
 import { PessoaService } from "../../shared/services/pessoa/PessoaService"
 import { ApiException } from "../../shared/services/ApiException"
 import ReactApexChart from "react-apexcharts"
 import { IPessoa } from "../../shared/types/Pessoa"
+import { UsuarioService } from "../../shared/services/usuario/usuarioService"
+import { IUsuarioData } from "../../shared/types/Usuario"
 
 
-export const Grafico = ()=>{
-  const [pessoa,setPessoa ]= useState<IPessoa[]>([]);
+export const Grafico = () => {
+  const [pessoa, setPessoa] = useState<IPessoa[]>([]);
+  const [usuario, setUsuario] = useState<IUsuarioData>()
 
   const state = {
     options: {
       chart: {
         foreColor: '#fff',
         id: 'apexchart-example',
-        background:"#262D47"
+        background: "#262D47"
 
       },
       xaxis: {
@@ -30,62 +33,62 @@ export const Grafico = ()=>{
     }]
   }
 
-  
-   const options2:ApexOptions = {
-      chart:{
-        foreColor: '#fff',
-      },
-      plotOptions:{},
-      series: [44, 55, 41, 17, 15],
-      labels: ['A', 'B', 'C', 'D', 'E']
+
+  const options2: ApexOptions = {
+    chart: {
+      foreColor: '#fff',
+    },
+    plotOptions: {},
+    series: [44, 55, 41, 17, 15],
+    labels: ['A', 'B', 'C', 'D', 'E']
 
 
-    }
- 
-
-
-
-  var options:ApexOptions = {
-    series: [{
-    data: [44, 55, 41, 64, 22, 43, 21]
-  }, {
-    data: [53, 32, 33, 52, 13, 44, 32]
-  }],
-  chart:{
-    foreColor: '#fff',
-    background:"#262D47"
-  },
-  plotOptions: {
-    bar: {
-      horizontal: true,
-      dataLabels: {
-        position: 'top',
-      },
-    }
-  },
-  dataLabels: {
-    enabled: true,
-    offsetX: -6,
-    style: {
-      fontSize: '12px',
-      colors: ['#fff']
-    }
-  },
-  stroke: {
-    show: true,
-    width: 1,
-    colors: ['#fff']
-  },
-  tooltip: {
-    shared: true,
-    intersect: false
-  },
-  xaxis: {
-    categories: [2001, 2002, 2003, 2004, 2005, 2006, 2007],
   }
+
+
+
+
+  var options: ApexOptions = {
+    series: [{
+      data: [44, 55, 41, 64, 22, 43, 21]
+    }, {
+      data: [53, 32, 33, 52, 13, 44, 32]
+    }],
+    chart: {
+      foreColor: '#fff',
+      background: "#262D47"
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+        dataLabels: {
+          position: 'top',
+        },
+      }
+    },
+    dataLabels: {
+      enabled: true,
+      offsetX: -6,
+      style: {
+        fontSize: '12px',
+        colors: ['#fff']
+      }
+    },
+    stroke: {
+      show: true,
+      width: 1,
+      colors: ['#fff']
+    },
+    tooltip: {
+      shared: true,
+      intersect: false
+    },
+    xaxis: {
+      categories: [2001, 2002, 2003, 2004, 2005, 2006, 2007],
+    }
   };
 
-  let state2 = {     
+  let state2 = {
     series: [{
       name: 'TEAM A',
       type: 'column',
@@ -114,7 +117,7 @@ export const Grafico = ()=>{
           columnWidth: '50%'
         }
       },
-      
+
       fill: {
         opacity: [0.85, 0.25, 1],
         gradient: {
@@ -150,19 +153,21 @@ export const Grafico = ()=>{
               return y.toFixed(0) + " points";
             }
             return y;
-      
+
           }
         }
       }
     },
-  
-  
+
+
   };
 
 
 
-  /* --- Consulta  pessoas na API---*/
+
   useEffect(() => {
+
+    /* --- Consulta  pessoas na API---*/
     PessoaService.getAll()
       .then((result) => {
         if (result instanceof ApiException) {
@@ -171,24 +176,36 @@ export const Grafico = ()=>{
           setPessoa(result.data);
         }
       });
+
+    /* --- Consulta  usuario na API---*/
+    UsuarioService.getAll()
+      .then((result) => {
+        if (result instanceof ApiException) {
+          alert(result.message)
+        } else {
+          setUsuario(result)
+
+        }
+
+      })
   }, []);
 
-    return(
-        <DestBord ferramentaListagem={false}>
-           <C.Container>
-              <C.Itens>
-                <C.Items stylo="#FF4560">505</C.Items>
-                <C.Items stylo="#00E396">10000</C.Items>
-                <C.Items stylo="#008FFB">{pessoa.length}</C.Items>
-              </C.Itens>
-              <C.Grafico>
-                 <Chart options={state.options} series={state.series} type="bar" width={600} height={350} />
-                 <Chart options={options2} series={options2.series} type="donut" width="380" />
-                 {/* <Chart options={options} series={options.series} type="bar" height={320} width={450} /> */}
-                 <ReactApexChart options={state2} series={state2.series} type="line" height={400} width={600} />
-              </C.Grafico>
-            </C.Container>
-        </DestBord>
+  return (
+    <DestBord ferramentaListagem={false}>
+      <C.Container>
+        <C.Itens>
+          <C.Items stylo="#FF4560">505</C.Items>
+          <C.Items stylo="#00E396">{usuario?.data.length}</C.Items>
+          <C.Items stylo="#008FFB">{pessoa.length}</C.Items>
+        </C.Itens>
+        <C.Grafico>
+          <Chart options={state.options} series={state.series} type="bar" width={600} height={350} />
+          <Chart options={options2} series={options2.series} type="donut" width="380" />
+          {/* <Chart options={options} series={options.series} type="bar" height={320} width={450} /> */}
+          <ReactApexChart options={state2} series={state2.series} type="line" height={400} width={600} />
+        </C.Grafico>
+      </C.Container>
+    </DestBord>
 
-    )
+  )
 }

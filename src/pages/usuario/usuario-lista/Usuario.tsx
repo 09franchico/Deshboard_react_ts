@@ -32,13 +32,13 @@ export const Usuario = () => {
       }
     
     return (
-        <DestBord ferramentaListagem={true}>
+        <DestBord ferramentaListagem={true} tipo="usuario">
             <C.Container>
             <table>
           <thead>
             <tr>
-              <td style={{width:"500px"}}>Nome</td>
-              <td style={{textAlign:"end",width:"300px"}}>Sobrenome</td>
+              <td style={{width:"500px"}}>Username</td>
+              <td style={{textAlign:"end",width:"300px"}}>Nome</td>
               <td style={{textAlign:"end"}}>Email</td>
               <td style={{textAlign:"center",width:"120px"}}>Ação</td>
             </tr>
@@ -52,7 +52,7 @@ export const Usuario = () => {
                   <td style={{textAlign:"end"}}>{item.email}</td>
                   <C.Td >
                       <MdDeleteOutline size={25} onClick={() => handleDalete(parseInt(item.id))}/>
-                      <MdCreate size={25} onClick={() => navigate(`/pessoa/detalhe/${item.id}`)}/>
+                      <MdCreate size={25} onClick={() => navigate(`/usuario/detalhe/${item.id}`)}/>
                       <MdRemoveRedEye size={25} onClick={()=>handleViewItem(parseInt(item.id))}/>
                   </C.Td>
                 </tr>

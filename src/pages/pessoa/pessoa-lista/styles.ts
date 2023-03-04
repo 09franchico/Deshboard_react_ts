@@ -11,7 +11,7 @@ export const Container = styled.div`
 
     table{
         width: 100%;
-        background-color: white;
+        background-color: #DEDEDE;
         border: none;
         border-radius: 2px;
     }

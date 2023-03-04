@@ -13,6 +13,9 @@ export const FerramentaListagem = ({ativo,tipo}:IProps)=>{
          if(tipo =="pessoa"){
             navigate('/pessoa/detalhe/nova')
          }
+         if(tipo=="usuario"){
+            navigate('/usuario/detalhe/nova')
+         }
     }
     return(
         <>
