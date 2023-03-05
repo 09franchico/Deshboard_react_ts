@@ -1,4 +1,5 @@
-import { IPessoa } from "../../../services/pessoa/PessoaService"
+
+import { IPessoa } from "../../../types/Pessoa"
 import * as C from "./styles"
 
 type Props = {

@@ -1,4 +1,4 @@
-import { IPessoa, IpessoaData } from '../../../services/pessoa/PessoaService'
+import { IpessoaData } from '../../../types/Pessoa'
 import { ButtonDest } from '../../botao'
 import * as C from './styles'
 

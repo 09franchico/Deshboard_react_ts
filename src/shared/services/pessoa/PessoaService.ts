@@ -1,6 +1,6 @@
 import { ApiException } from "../ApiException";
 import { Api } from "../ApiConfig";
-import { IPessoa, IpessoaData } from "../../types/Pessoa";
+import {IPessoa, IpessoaData } from "../../types/Pessoa";
 
 
 const getAll = async (): Promise<IpessoaData | ApiException> => {

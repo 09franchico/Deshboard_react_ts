@@ -1,6 +1,6 @@
 import { ApiException } from "../ApiException";
 import { Api } from "../ApiConfig";
-import {  IUsuario, IUsuarioData } from "../../types/Usuario";
+import { IUsuario, IUsuarioData } from "../../types/Usuario";
 
 
 const getAll = async (): Promise<IUsuarioData | ApiException> => {

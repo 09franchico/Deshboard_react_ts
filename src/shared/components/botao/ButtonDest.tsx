@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { ApiException } from '../../services/ApiException'
-import { IPessoa, IpessoaData, PessoaService } from '../../services/pessoa/PessoaService'
+import {  PessoaService } from '../../services/pessoa/PessoaService'
+import { IpessoaData } from '../../types/Pessoa'
 import * as C from './styles'
 
 type Props = {
