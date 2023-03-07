@@ -46,11 +46,21 @@ export const UsuarioCad = () => {
         <DestBord ferramentaListagem={false}>
             <C.Container>
                 <FormUsuario ref={formRef} onSubmit={handleSubmit}>
-                     <VformUsuario name='username' tamanho={500} placeholder="Digite seu nome" label='nome'/>
-                     <VformUsuario name='name' tamanho={500} placeholder="Digite seu nome" label='sobrenome'/>
-                     <VformUsuario name='email' type='email' tamanho={500} placeholder="Digite seu nome" label='email'/>
-                     <VformUsuario name='roles' tamanho={300} placeholder="Digite seu nome" label='roles'/>
-                     <button>SALVAR</button>
+                     <VformUsuario name='username' tamanho={500} placeholder="Digite seu nome" label='Nome'/>
+                     <VformUsuario name='name' tamanho={500} placeholder="Digite seu nome" label='Sobrenome'/>
+                     <VformUsuario name='email' type='email' tamanho={500} placeholder="Digite seu nome" label='Email'/>
+                     <VformUsuario name='role' tamanho={500} placeholder="Digite seu nome" label='Roles'/>
+                     <C.ConatinerButton>
+                  <C.ButtonSave 
+                      hove='#FF4560' 
+                      borde='#FF4560'
+                      colorItem='#1B213B'>Cancelar
+                  </C.ButtonSave>
+                  <C.ButtonSave 
+                      hove='#0cbe82' 
+                      colorItem='#00E396'>Salvar
+                  </C.ButtonSave>
+              </C.ConatinerButton>
                 </FormUsuario>
             </C.Container>
         </DestBord>
