@@ -52,7 +52,6 @@ export const Container = styled.div`
 
 
 //Form styles do login
-
 export const VformLoginStyle = styled(Unform)`
   color: white;
   padding: 10px;
@@ -92,4 +91,20 @@ export const LabelLogin = styled.label`
         margin-left: -10px;
     }
 
+`
+
+
+//form Usuario
+export const FormUsuario = styled(Unform)`
+  color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 600px){
+        flex-direction: column;
+        
+    }
+   
 `

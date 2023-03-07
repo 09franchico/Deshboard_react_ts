@@ -5,6 +5,8 @@ import * as C from './styles'
 import { UsuarioService } from '../../../shared/services/usuario/usuarioService';
 import { FormHandles } from '@unform/core';
 import { IUsuario } from '../../../shared/types/Usuario';
+import { FormUsuario } from '../../../shared/forms/styles';
+import { VformUsuario } from '../../../shared/forms/VformUsuario';
 
 export const UsuarioCad = () => {
     const { id = 'nova' } = useParams<'id'>();
@@ -36,12 +38,20 @@ export const UsuarioCad = () => {
       }, [id]);
 
 
+      const handleSubmit = (data:IUsuario)=>{
+        console.log(data)
+      }
+    
     return (
         <DestBord ferramentaListagem={false}>
             <C.Container>
-                <h1>
-                  {usuario?.email}
-                </h1>
+                <FormUsuario ref={formRef} onSubmit={handleSubmit}>
+                     <VformUsuario name='username' tamanho={500} placeholder="Digite seu nome" label='nome'/>
+                     <VformUsuario name='name' tamanho={500} placeholder="Digite seu nome" label='sobrenome'/>
+                     <VformUsuario name='email' type='email' tamanho={500} placeholder="Digite seu nome" label='email'/>
+                     <VformUsuario name='roles' tamanho={300} placeholder="Digite seu nome" label='roles'/>
+                     <button>SALVAR</button>
+                </FormUsuario>
             </C.Container>
         </DestBord>
     )
