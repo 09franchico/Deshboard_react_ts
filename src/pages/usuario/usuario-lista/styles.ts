@@ -63,3 +63,40 @@ export const Td = styled.td`
     }
 
 `
+
+
+//Css para body no Modal
+
+export const ContainerView = styled.div`
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #262D47;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    
+
+    div{
+       margin: 10px;
+       display: flex;
+       
+    }
+    
+
+    @media (max-width: 600px){
+        font-size: 9px;
+        padding: 5px;
+   }
+
+`
+
+export const Span = styled.div`
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+
+  h2{
+   margin-bottom: 2px;
+  }
+
+`
