@@ -7,6 +7,7 @@ import { FormHandles } from '@unform/core';
 import { IUsuario } from '../../../shared/types/Usuario';
 import { FormUsuario } from '../../../shared/forms/styles';
 import { VformUsuario } from '../../../shared/forms/VformUsuario';
+import { ApiException } from '../../../shared/services/ApiException';
 
 export const UsuarioCad = () => {
     const { id = 'nova' } = useParams<'id'>();
@@ -39,7 +40,38 @@ export const UsuarioCad = () => {
 
 
       const handleSubmit = (data:IUsuario)=>{
-        console.log(data)
+        if (id === 'nova') {
+          if (data.name != '' && data.email != '') {
+            UsuarioService
+            .create(data)
+            .then((result) => {
+              if (result instanceof ApiException) {
+                alert(result.message);
+              } else {
+                // setMessageModal('Cadastro')
+                // setSucessoModal(true)
+                // setModalStatus(true)
+                
+              }
+            });
+          }else{
+            alert('Valores não pode ser vazio')
+          }
+        }else{
+            //Update de pessoa
+            UsuarioService
+                  .updateById(Number(id),data)
+                  .then((result) => {
+                    if (result instanceof ApiException) {
+                      alert(result.message);
+                    } else {
+
+                  //     setMessageModal('Update')
+                  // setSucessoModal(true)
+                  // setModalStatus(true)
+                     }
+                  });
+        }
       }
     
     return (

@@ -2,8 +2,8 @@ version: '3.5'
 services:
   app:
     build: .
-    container_name: vite
-    image: vite
+    container_name: deploy_ds
+    image: deploy_ds
     ports:
       - '5173:80'
     volumes:
