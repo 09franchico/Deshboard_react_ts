@@ -12,10 +12,11 @@ import { UsuarioView } from "./UsuarioView";
 export const Usuario = () => {
   const [statusModalItem, setStatusModalItem] = useState(false)
   const [usuarioItem, setUsuarioItem] = useState<IUsuario>()
-
-  const [usuario, setUsuario] = useState<IUsuarioData>()
+  const [usuario, setUsuario] = useState<IUsuarioData>({data:[],message:""})
   const navigate = useNavigate()
 
+
+  //Listagem do usuario
   useEffect(() => {
     UsuarioService.getAll()
       .then((result) => {
@@ -26,11 +27,25 @@ export const Usuario = () => {
         }
       });
   }, []);
+  
 
+  //Delete usuario
   const handleDalete = (id: number) => {
-    console.log("delete")
+    UsuarioService.deleteById(id)
+    .then((result) => {
+    if (result instanceof ApiException) {
+        alert(result.message);
+    } else {
+        setUsuario(usua => ({
+            ...usua,
+            data: usua?.data.filter(usuario=> parseInt(usuario.id) !== id)
+        }));
+        
+    }
+    })
   }
 
+  //Visualização do dados do usuario
   const handleViewItem = (id: number) => {
     UsuarioService.getById(Number(id))
       .then((result) => {
