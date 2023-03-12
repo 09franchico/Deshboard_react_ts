@@ -7,6 +7,7 @@ import { VformLogin } from '../../shared/forms/VformeLogin'
 import { FcCdLogo} from "react-icons/fc";
 import { AuthContext } from '../../shared/contexts/auth/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import { Loading } from '../../shared/components/loading/Loading'
 
 type DataLogin = {
     email:string,
@@ -18,20 +19,22 @@ export const Login = ()=>{
     const navigate = useNavigate();
     const formRef = useRef<FormHandles>(null)
     const [errorLogin, setErrorLogin ] = useState('')
+    const [loading , setLoading] = useState(false)
 
     const handleSubmit = async (data:DataLogin)=>{
         if(data.email && data.password){
+            setLoading(true)
             const isLogged = await auth.signin(data.email, data.password);
             if (isLogged) {
                 navigate('/');
                 window.location.reload();
+                setLoading(false)
             } else {
+               setLoading(false)
                setErrorLogin("Email ou senha incorreta")
             }
-
         }
     }
-
 
     return(
         <C.Container>
@@ -50,6 +53,10 @@ export const Login = ()=>{
                     }
                  </VformLoginStyle>
             </C.ViewLogin>
+            {
+                loading &&
+                <Loading/>
+            }
         </C.Container>
     )
 
