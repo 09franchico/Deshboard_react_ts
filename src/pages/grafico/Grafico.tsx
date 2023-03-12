@@ -201,7 +201,6 @@ export const Grafico = () => {
         <C.Grafico>
           <Chart options={state.options} series={state.series} type="bar" width={600} height={350} />
           <Chart options={options2} series={options2.series} type="donut" width="380" />
-          {/* <Chart options={options} series={options.series} type="bar" height={320} width={450} /> */}
           <ReactApexChart options={state2} series={state2.series} type="line" height={400} width={600} />
         </C.Grafico>
       </C.Container>

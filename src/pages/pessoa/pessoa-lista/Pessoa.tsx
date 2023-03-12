@@ -7,6 +7,7 @@ import { MdCreate, MdDeleteOutline, MdOutlineRemoveRedEye, MdRemoveRedEye } from
 import { Modal, ModalDelete, Viewdata } from "../../../shared/components/modal"
 import { useNavigate } from "react-router-dom"
 import { IPessoa, IpessoaData } from "../../../shared/types/Pessoa"
+import { PessoaView } from "./PessoaView"
 
 export const Pessoa = () => {
   const [modalStatus, setModalStatus] = useState(false)
@@ -94,8 +95,9 @@ export const Pessoa = () => {
         </Modal>
         <Viewdata 
              slug={statusModalItem} 
-             data={pessoaItem} 
-             setStatusModalItem={setStatusModalItem}/>
+             setStatusModalItem={setStatusModalItem}>
+             <PessoaView data={pessoaItem}/>
+        </Viewdata>
       </C.Container>
     </DestBord >
   )

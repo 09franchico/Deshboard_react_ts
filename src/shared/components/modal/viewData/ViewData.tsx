@@ -4,18 +4,18 @@ import * as C from "./styles"
 
 type Props = {
    slug:boolean,
-   data:IPessoa | undefined,
    setStatusModalItem:React.Dispatch<React.SetStateAction<boolean>>
+   children:React.ReactNode
 }
 
-export const Viewdata = ({slug,data,setStatusModalItem}:Props)=>{
+export const Viewdata = ({slug,setStatusModalItem,children}:Props)=>{
 
    const handleModalStatus = (e:any)=>{
       if(e.target.classList.contains('modal')){
          setStatusModalItem(false)
       }
   }
-
+  
   return(
      <C.Container 
           className="modal"
@@ -23,36 +23,7 @@ export const Viewdata = ({slug,data,setStatusModalItem}:Props)=>{
           onClick={handleModalStatus}
           >
         <C.ModelBody>
-         <div>
-            <C.Span>
-               <h2>Email:</h2>
-               <p>{data?.email}</p>
-            </C.Span>
-        </div>
-         <div>
-              <C.Span>
-                  <h2>Nome:</h2>
-                  <p>{data?.nome}</p>
-               </C.Span>
-               <C.Span>
-                  <h2>Sobrenome:</h2>
-                  <p>{data?.sobrenome}</p>
-               </C.Span>
-         </div>
-         <div>
-              <C.Span>
-                  <h2>Bairro:</h2>
-                  <p>{data?.bairro?data?.bairro:"------------"}</p>
-               </C.Span>
-               <C.Span>
-                  <h2>Rua:</h2>
-                  <p>{data?.rua}</p>
-               </C.Span>
-               <C.Span>
-                  <h2>Complemento:</h2>
-                  <p>{data?.complemento?data?.complemento:"-------------------" }</p>
-               </C.Span>
-         </div>
+         {children}
          <C.ConatinerBuuton>
              <C.ButtonVoltar  hove='#FF4560'
                      borde='#FF4560'

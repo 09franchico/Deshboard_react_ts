@@ -28,7 +28,17 @@ export const Usuario = () => {
       }
 
       const handleViewItem = (id:number)=>{
-        console.log("view")
+        UsuarioService.getById(Number(id))
+        .then((result) => {
+          if (result instanceof Error) {
+            alert(result.message);
+            navigate('/pessoa');
+          } else {
+            //  setStatusModalItem(true)
+            //  setPessoaItem(result)
+            
+          }
+        });
       }
     
     return (
@@ -59,7 +69,7 @@ export const Usuario = () => {
               ))
             }
           </tbody>
-        </table>
+          </table>
                 {/* {usuario?.data.map((item)=>(
                     <li>{item.email}</li> 
                 ))} */}
