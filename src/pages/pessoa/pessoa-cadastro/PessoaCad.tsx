@@ -129,7 +129,7 @@ export const PessoaCard = () => {
         </Vform>
         <Modal status={modalStatus} setStatusModal={setModalStatus}>
           {sucessoModal 
-             ? <Sucesso msg={messageModal}/>
+             ? <Sucesso url='pessoa' msg={messageModal}/>
              :<div>
                   <p>Deseja cancelar o cadastro ?</p><C.ButtonSave
                   hove='#FF4560' 

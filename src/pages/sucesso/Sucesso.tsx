@@ -5,14 +5,15 @@ import * as C from "./styles"
 
 type Ppros = {
     msg:string
+    url:string
 }
 
-export const Sucesso = ({msg}:Ppros)=>{
+export const Sucesso = ({msg,url}:Ppros)=>{
     const navigate = useNavigate()
 
     useEffect(()=>{
         const navegateRead = ()=>{
-            navigate('/pessoa')
+            navigate(`/${url}`)
         }
         setTimeout(navegateRead, 2000)
     })
