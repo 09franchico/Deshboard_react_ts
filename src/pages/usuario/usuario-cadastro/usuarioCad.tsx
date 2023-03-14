@@ -15,7 +15,6 @@ export const UsuarioCad = () => {
   const { id = 'nova' } = useParams<'id'>();
   const formRef = useRef<FormHandles>(null)
   const navigate = useNavigate()
-  const [usuario, setUsuario] = useState<IUsuario>()
   const [modalStatus, setModalStatus] = useState(false)
   const [sucessoModal,setSucessoModal] = useState(false)
   const [messageModal,setMessageModal] = useState('')
@@ -29,8 +28,6 @@ export const UsuarioCad = () => {
             navigate('/usuario');
           } else {
             formRef.current?.setData(result);
-            setUsuario(result)
-            console.log(usuario)
           }
         });
     } else {
@@ -39,7 +36,7 @@ export const UsuarioCad = () => {
         name: '',
         email: '',
         password:'',
-        roles: '',
+        role: '',
       });
     }
   }, [id]);
@@ -64,7 +61,7 @@ export const UsuarioCad = () => {
       }
 
     } else {
-      //Update de pessoa
+      //Update de usuario
       UsuarioService
         .updateById(Number(id), data)
         .then((result) => {
@@ -78,6 +75,8 @@ export const UsuarioCad = () => {
         });
     }
   }
+
+
 
   //Cancelar cadastro
   const handleCancel = (e:any)=>{
@@ -100,7 +99,7 @@ export const UsuarioCad = () => {
           <VformUsuario name='name' tamanho={500} placeholder="Digite seu nome" label='Sobrenome' />
           <VformUsuario name='email' type='email' tamanho={500} placeholder="Digite seu nome" label='Email' />
           <VformUsuario name='password' type='password' tamanho={500} placeholder="Digite sua senha" label='Password' />
-          <VformUsuario name='roles' tamanho={500} placeholder="Digite seu nome" label='Roles' />
+          <VformUsuario name='role' type='text' tamanho={500} placeholder="Digite seu nome" label='Role' />
           <C.ConatinerButton>
             <C.ButtonSave
               hove='#FF4560'
@@ -114,6 +113,8 @@ export const UsuarioCad = () => {
             </C.ButtonSave>
           </C.ConatinerButton>
         </FormUsuario>
+
+        {/* Modal quando sucesso ou cancelar */}
         <Modal status={modalStatus} setStatusModal={setModalStatus}>
           {sucessoModal
             ? <Sucesso url="usuario" msg={messageModal} />

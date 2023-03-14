@@ -9,7 +9,7 @@ yarn
 yarn dev
 
 
-# Docker da aplicação
+# Docker da aplicação / Deploy
 
 docker-compose up
 
