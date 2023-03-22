@@ -6,11 +6,15 @@ import { ApiException } from "../../../shared/services/ApiException";
 import { IUsuario, IUsuarioData } from "../../../shared/types/Usuario";
 import { MdCreate, MdDeleteOutline, MdRemoveRedEye } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { Viewdata } from "../../../shared/components/modal";
+import { Modal, Viewdata } from "../../../shared/components/modal";
 import { UsuarioView } from "./UsuarioView";
+import { ModalDeleteUser } from "../../../shared/components/modal/delete/ModalDeleteUser";
 
 export const Usuario = () => {
   const [statusModalItem, setStatusModalItem] = useState(false)
+  const [modalStatus, setModalStatus] = useState(false)
+  const [idUsuario , setIdUsuario] = useState(0)
+
   const [usuarioItem, setUsuarioItem] = useState<IUsuario>()
   const [usuario, setUsuario] = useState<IUsuarioData>({data:[],message:""})
   const navigate = useNavigate()
@@ -31,18 +35,8 @@ export const Usuario = () => {
 
   //Delete usuario
   const handleDalete = (id: number) => {
-    UsuarioService.deleteById(id)
-    .then((result) => {
-    if (result instanceof ApiException) {
-        alert(result.message);
-    } else {
-        setUsuario(usua => ({
-            ...usua,
-            data: usua?.data.filter(usuario=> parseInt(usuario.id) !== id)
-        }));
-        
-    }
-    })
+    setIdUsuario(id)
+    setModalStatus(true)
   }
 
   //Visualização do dados do usuario
@@ -89,6 +83,14 @@ export const Usuario = () => {
           </tbody>
         </table>
       </C.Container>
+      <Modal status={modalStatus} setStatusModal={setModalStatus}>
+           <ModalDeleteUser 
+               url="/usuario"
+               idDelete ={idUsuario} 
+               setStatusModel={setModalStatus}
+               setData={setUsuario}
+               />
+        </Modal>
       <Viewdata
         slug={statusModalItem}
         setStatusModalItem={setStatusModalItem}>
